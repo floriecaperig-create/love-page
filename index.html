@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Simple Question ❤️</title>
+<title>Just One Question ❤️</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -21,9 +21,9 @@ body{
     justify-content:center;
     align-items:center;
     overflow:hidden;
-    background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#7c3aed);
+    background:linear-gradient(-45deg,#ff758c,#ff5e78,#ff8fa3,#ffc2d1);
     background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
+    animation:bgMove 10s ease infinite;
 }
 
 @keyframes bgMove{
@@ -32,61 +32,53 @@ body{
     100%{background-position:0% 50%;}
 }
 
-/* Floating Lights */
 body::before,
 body::after{
     content:'';
     position:absolute;
-    width:350px;
-    height:350px;
+    width:300px;
+    height:300px;
     border-radius:50%;
-    filter:blur(80px);
-    z-index:0;
+    filter:blur(90px);
 }
 
 body::before{
-    background:#00e5ff;
+    background:#ff4d6d;
     top:-100px;
     left:-100px;
 }
 
 body::after{
-    background:#ff4fd8;
+    background:#ffb3c1;
     bottom:-100px;
     right:-100px;
 }
 
-/* Glass Card */
 .card{
-    position:relative;
-    z-index:1;
     width:420px;
     padding:40px;
     text-align:center;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.25);
     border-radius:25px;
-    box-shadow:
-        0 8px 32px rgba(0,0,0,0.3),
-        0 0 20px rgba(255,255,255,0.1);
+    box-shadow:0 8px 32px rgba(0,0,0,0.15);
     animation:floatCard 4s ease-in-out infinite;
+    z-index:10;
 }
 
 @keyframes floatCard{
     0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
+    50%{transform:translateY(-10px);}
 }
 
 h1{
     color:white;
-    margin-bottom:20px;
-    font-size:2rem;
+    margin-bottom:15px;
 }
 
 p{
-    color:rgba(255,255,255,0.8);
+    color:white;
     margin-bottom:20px;
 }
 
@@ -96,15 +88,15 @@ input{
     border:none;
     outline:none;
     border-radius:15px;
-    background:rgba(255,255,255,0.1);
-    color:white;
+    margin-bottom:15px;
     text-align:center;
     font-size:18px;
-    margin-bottom:20px;
+    background:rgba(255,255,255,0.2);
+    color:white;
 }
 
 input::placeholder{
-    color:rgba(255,255,255,0.6);
+    color:rgba(255,255,255,0.8);
 }
 
 button{
@@ -115,107 +107,184 @@ button{
     cursor:pointer;
     font-size:18px;
     color:white;
-    background:linear-gradient(90deg,#00e5ff,#7c3aed);
-    box-shadow:0 0 20px rgba(0,229,255,0.5);
+    background:linear-gradient(90deg,#ff4d6d,#ff758c);
     transition:.3s;
 }
 
 button:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 35px rgba(0,229,255,0.8);
+    transform:scale(1.03);
 }
 
 .hidden{
     display:none;
 }
 
-/* Rose Reveal */
+/* LOVE PAGE */
+
 .love-container{
     text-align:center;
-    color:white;
+    position:relative;
 }
 
-.message{
-    font-size:4rem;
-    font-weight:700;
-    margin-top:20px;
-    animation:fadeIn 2s ease forwards;
+.flower{
+    position:relative;
+    width:300px;
+    height:450px;
+    margin:auto;
 }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
+/* STEM */
+
+.stem{
+    position:absolute;
+    bottom:0;
+    left:145px;
+    width:10px;
+    height:0;
+    border-radius:20px;
+    background:linear-gradient(#34d399,#15803d);
+    animation:growStem 2s forwards;
+}
+
+@keyframes growStem{
+    to{
+        height:250px;
     }
+}
+
+/* LEAVES */
+
+.leaf{
+    position:absolute;
+    width:60px;
+    height:30px;
+    background:#34d399;
+    border-radius:60px 0;
+    opacity:0;
+}
+
+.leaf-left{
+    left:90px;
+    bottom:120px;
+    transform:rotate(-35deg) scale(0);
+    animation:leafGrow .8s 1.8s forwards;
+}
+
+.leaf-right{
+    left:150px;
+    bottom:170px;
+    transform:rotate(145deg) scale(0);
+    animation:leafGrow .8s 2.2s forwards;
+}
+
+@keyframes leafGrow{
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:scale(1);
     }
 }
 
-/* Blooming Rose */
+/* ROSE */
+
 .rose{
-    position:relative;
-    width:180px;
-    height:220px;
-    margin:auto;
+    position:absolute;
+    left:90px;
+    top:30px;
+    width:120px;
+    height:120px;
     transform:scale(0);
-    animation:bloom 2.5s forwards;
+    animation:bloom 1.5s 2.8s forwards;
 }
 
 @keyframes bloom{
-    0%{
-        transform:scale(0) rotate(-180deg);
-    }
-    100%{
-        transform:scale(1) rotate(0deg);
+    to{
+        transform:scale(1);
     }
 }
 
 .petal{
     position:absolute;
-    width:80px;
-    height:110px;
-    background:linear-gradient(#ff4d6d,#ff1744);
+    width:70px;
+    height:90px;
     border-radius:50%;
-    transform-origin:bottom center;
+    background:linear-gradient(
+        180deg,
+        #ffccd5,
+        #ff758c,
+        #ff4d6d
+    );
 }
 
-.p1{top:20px;left:50px;}
-.p2{top:35px;left:25px;transform:rotate(-35deg);}
-.p3{top:35px;left:75px;transform:rotate(35deg);}
-.p4{top:55px;left:45px;}
-.p5{top:50px;left:15px;transform:rotate(-70deg);}
-.p6{top:50px;left:85px;transform:rotate(70deg);}
-
-.stem{
-    position:absolute;
-    width:10px;
-    height:150px;
-    background:linear-gradient(#22c55e,#166534);
-    left:85px;
-    top:100px;
-    border-radius:10px;
+.center{
+    left:25px;
+    top:15px;
 }
 
-.leaf{
-    position:absolute;
-    width:45px;
-    height:25px;
-    background:#22c55e;
-    border-radius:50px 0;
-}
-
-.l1{
-    top:150px;
-    left:45px;
+.p1{
+    left:-5px;
+    top:25px;
     transform:rotate(-35deg);
 }
 
-.l2{
-    top:180px;
-    left:90px;
-    transform:rotate(145deg);
+.p2{
+    left:55px;
+    top:25px;
+    transform:rotate(35deg);
+}
+
+.p3{
+    left:10px;
+    top:50px;
+}
+
+.p4{
+    left:40px;
+    top:50px;
+}
+
+/* MESSAGE */
+
+.message{
+    margin-top:30px;
+    font-size:4rem;
+    font-weight:700;
+    color:white;
+    opacity:0;
+    text-shadow:
+        0 0 20px #ff4d6d,
+        0 0 40px #ff758c;
+    animation:showText 2s 4.5s forwards;
+}
+
+@keyframes showText{
+    to{
+        opacity:1;
+    }
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+    position:absolute;
+    font-size:24px;
+    animation:floatUp 5s linear infinite;
+    opacity:0;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(100px);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-500px);
+        opacity:0;
+    }
 }
 </style>
 </head>
@@ -223,54 +292,88 @@ button:hover{
 <body>
 
 <div class="card" id="questionCard">
-    <h1>✨ Answer this Question ✨</h1>
+    <h1>❤️ One Simple Question ❤️</h1>
     <p>What is 1 + 1?</p>
 
     <input type="text" id="answer" placeholder="Type your answer...">
 
-    <button onclick="checkAnswer()">
-        Submit 🚀
-    </button>
+    <button onclick="checkAnswer()">Submit</button>
 </div>
 
 <div class="love-container hidden" id="lovePage">
 
-    <div class="rose">
-        <div class="petal p1"></div>
-        <div class="petal p2"></div>
-        <div class="petal p3"></div>
-        <div class="petal p4"></div>
-        <div class="petal p5"></div>
-        <div class="petal p6"></div>
+    <div class="flower">
 
         <div class="stem"></div>
 
-        <div class="leaf l1"></div>
-        <div class="leaf l2"></div>
+        <div class="leaf leaf-left"></div>
+        <div class="leaf leaf-right"></div>
+
+        <div class="rose">
+            <div class="petal center"></div>
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+        </div>
+
     </div>
 
     <div class="message">
-        I Love You 2 ❤️
+        I Love You ❤️
     </div>
 
 </div>
 
 <script>
+
 function checkAnswer(){
-    const answer = document.getElementById("answer").value.trim();
+
+    let answer = document.getElementById("answer").value.trim();
 
     if(answer === "2"){
-        document.getElementById("questionCard").style.display = "none";
+
+        document.getElementById("questionCard").style.display="none";
         document.getElementById("lovePage").classList.remove("hidden");
-    } else {
-        alert("Wrong answer 😜 Try again!");
+
+        createHearts();
+
+    }else{
+        alert("Oops! Try again ❤️");
     }
 }
 
-document.getElementById("answer").addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
+function createHearts(){
+
+    setInterval(()=>{
+
+        let heart=document.createElement("div");
+
+        heart.classList.add("heart");
+
+        heart.innerHTML="❤️";
+
+        heart.style.left=Math.random()*100+"vw";
+
+        heart.style.animationDuration=
+        (Math.random()*3+3)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },6000);
+
+    },300);
+}
+
+document.getElementById("answer")
+.addEventListener("keypress",function(e){
+
+    if(e.key==="Enter"){
         checkAnswer();
     }
+
 });
 </script>
 
