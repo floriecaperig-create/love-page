@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Simple Question ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#0f172a,#1e293b,#312e81,#7c3aed);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Floating Lights */
+body::before,
+body::after{
+    content:'';
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(80px);
+    z-index:0;
+}
+
+body::before{
+    background:#00e5ff;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    background:#ff4fd8;
+    bottom:-100px;
+    right:-100px;
+}
+
+/* Glass Card */
+.card{
+    position:relative;
+    z-index:1;
+    width:420px;
+    padding:40px;
+    text-align:center;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:25px;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.3),
+        0 0 20px rgba(255,255,255,0.1);
+    animation:floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+h1{
+    color:white;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+p{
+    color:rgba(255,255,255,0.8);
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    text-align:center;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+input::placeholder{
+    color:rgba(255,255,255,0.6);
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:18px;
+    color:white;
+    background:linear-gradient(90deg,#00e5ff,#7c3aed);
+    box-shadow:0 0 20px rgba(0,229,255,0.5);
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 35px rgba(0,229,255,0.8);
+}
+
+.hidden{
+    display:none;
+}
+
+/* Rose Reveal */
+.love-container{
+    text-align:center;
+    color:white;
+}
+
+.message{
+    font-size:4rem;
+    font-weight:700;
+    margin-top:20px;
+    animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Blooming Rose */
+.rose{
+    position:relative;
+    width:180px;
+    height:220px;
+    margin:auto;
+    transform:scale(0);
+    animation:bloom 2.5s forwards;
+}
+
+@keyframes bloom{
+    0%{
+        transform:scale(0) rotate(-180deg);
+    }
+    100%{
+        transform:scale(1) rotate(0deg);
+    }
+}
+
+.petal{
+    position:absolute;
+    width:80px;
+    height:110px;
+    background:linear-gradient(#ff4d6d,#ff1744);
+    border-radius:50%;
+    transform-origin:bottom center;
+}
+
+.p1{top:20px;left:50px;}
+.p2{top:35px;left:25px;transform:rotate(-35deg);}
+.p3{top:35px;left:75px;transform:rotate(35deg);}
+.p4{top:55px;left:45px;}
+.p5{top:50px;left:15px;transform:rotate(-70deg);}
+.p6{top:50px;left:85px;transform:rotate(70deg);}
+
+.stem{
+    position:absolute;
+    width:10px;
+    height:150px;
+    background:linear-gradient(#22c55e,#166534);
+    left:85px;
+    top:100px;
+    border-radius:10px;
+}
+
+.leaf{
+    position:absolute;
+    width:45px;
+    height:25px;
+    background:#22c55e;
+    border-radius:50px 0;
+}
+
+.l1{
+    top:150px;
+    left:45px;
+    transform:rotate(-35deg);
+}
+
+.l2{
+    top:180px;
+    left:90px;
+    transform:rotate(145deg);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="questionCard">
+    <h1>✨ One Question ✨</h1>
+    <p>What is 1 + 1?</p>
+
+    <input type="text" id="answer" placeholder="Type your answer...">
+
+    <button onclick="checkAnswer()">
+        Submit 🚀
+    </button>
+</div>
+
+<div class="love-container hidden" id="lovePage">
+
+    <div class="rose">
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+
+        <div class="stem"></div>
+
+        <div class="leaf l1"></div>
+        <div class="leaf l2"></div>
+    </div>
+
+    <div class="message">
+        I Love You 2 ❤️
+    </div>
+
+</div>
+
+<script>
+function checkAnswer(){
+    const answer = document.getElementById("answer").value.trim();
+
+    if(answer === "2"){
+        document.getElementById("questionCard").style.display = "none";
+        document.getElementById("lovePage").classList.remove("hidden");
+    } else {
+        alert("Wrong answer 😜 Try again!");
+    }
+}
+
+document.getElementById("answer").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        checkAnswer();
+    }
+});
+</script>
+
+</body>
+</html>
